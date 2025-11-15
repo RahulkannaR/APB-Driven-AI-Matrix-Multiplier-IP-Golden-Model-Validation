@@ -1,0 +1,541 @@
+QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
+Start time: 11:05:23 on Nov 14,2025
+qrun -batch -access=rw+/. -uvmhome uvm-1.2 -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
+Creating library 'qrun.out/work'.
+Mapping library 'mtiUvm' to 'qrun.out/work'.
+QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
+Start time: 11:05:23 on Nov 14,2025
+vlog -timescale 1ns/1ns -mfcu -ccflags "-Wno-missing-declarations" -ccflags "-Wno-maybe-uninitialized" -ccflags "-Wno-return-type" -ccflags "-DQUESTA" /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc /usr/share/questa/questasim/verilog_src/uvm-1.2/src/uvm_pkg.sv /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv design.sv testbench.sv -work qrun.out/work "+incdir+/usr/share/questa/questasim/verilog_src/uvm-1.2/src" -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
+-- Compiling package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling package questa_uvm_pkg
+-- Importing package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling package matmul_pkg
+-- Compiling interface matmul_interface
+-- Importing package matmul_pkg
+-- Compiling package uvm_pkg_sv_unit
+-- Importing package matmul_pkg
+-- Compiling module matmul_tester
+-- Compiling module matmul_stimulus
+-- Compiling module mem
+-- Compiling module pe_module
+-- Compiling module matmul_calc
+-- Compiling module apb_slave
+-- Compiling module matmul
+-- Compiling module matmul_tb
+
+Top level modules:
+	matmul_tb
+-- Compiling DPI/PLI C++ file /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc
+
+In file included from /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl.c:27,
+                 from /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc:37:
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c: In function 'int uvm_is_vhdl_path(char*)':
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c:90:12: warning: 'char* strncpy(char*, const char*, size_t)' specified bound depends on the length of the source argument [-Wstringop-overflow=]
+   90 |     strncpy(path_copy, path, path_len);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c:72:20: note: length computed here
+   72 |   path_len = strlen(path);
+      |              ~~~~~~^~~~~~
+
+End time: 11:05:25 on Nov 14,2025, Elapsed time: 0:00:02
+Errors: 0, Warnings: 0
+QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 11:05:25 on Nov 14,2025
+vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
+
+Top level modules:
+	matmul_tb
+
+Analyzing design...
+-- Loading module matmul_tb
+-- Loading interface matmul_interface
+-- Loading module matmul
+-- Loading module apb_slave
+-- Loading module matmul_calc
+-- Loading module mem
+-- Loading module matmul_tester
+-- Loading module matmul_stimulus
+-- Loading module pe_module
+Optimizing 12 design-units (inlining 0/24 module instances):
+-- Optimizing package matmul_pkg(fast)
+-- Optimizing package uvm_pkg_sv_unit(fast)
+-- Optimizing module mem(fast)
+-- Optimizing module matmul_calc(fast)
+-- Optimizing module matmul_stimulus(fast)
+-- Optimizing module matmul(fast)
+-- Optimizing module apb_slave(fast)
+-- Optimizing module pe_module(fast)
+-- Optimizing module matmul_tb(fast)
+-- Optimizing module matmul_tester(fast)
+-- Optimizing interface matmul_interface(fast__1)
+-- Optimizing interface matmul_interface(fast)
+Optimized design name is qrun_opt
+End time: 11:05:26 on Nov 14,2025, Elapsed time: 0:00:01
+Errors: 0, Warnings: 1
+# vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 11:05:26 on Nov 14,2025
+# Loading /tmp/unknown@a7ff2355fc8d_dpi_50/linux_x86_64_gcc-10.3.0/export_tramp.so
+# //  Questa Sim-64
+# //  Version 2024.3_1 linux_x86_64 Oct 17 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.matmul_pkg(fast)
+# Loading work.uvm_pkg_sv_unit(fast)
+# Loading work.matmul_tb(fast)
+# Loading work.matmul_interface(fast__1)
+# Loading work.matmul(fast)
+# Loading work.apb_slave(fast)
+# Loading work.matmul_calc(fast)
+# Loading work.pe_module(fast)
+# Loading work.mem(fast)
+# Loading work.matmul_tester(fast)
+# Loading work.matmul_stimulus(fast)
+# Loading /tmp/unknown@a7ff2355fc8d_dpi_50/linux_x86_64_gcc-10.3.0/vsim_auto_compile.so
+# 
+# run -all
+# [0] Simulation started
+# [STIMULUS] Matrix #0 OK (4 elements)
+# total correct=4 wrong=0 matrices=1
+# [STIMULUS] Matrix #1 OK (4 elements)
+# total correct=8 wrong=0 matrices=2
+# [STIMULUS] Matrix #2 OK (4 elements)
+# total correct=12 wrong=0 matrices=3
+# [STIMULUS] Matrix #3 OK (4 elements)
+# total correct=16 wrong=0 matrices=4
+# [STIMULUS] Matrix #4 OK (4 elements)
+# total correct=20 wrong=0 matrices=5
+# [STIMULUS] Matrix #5 OK (4 elements)
+# total correct=24 wrong=0 matrices=6
+# [STIMULUS] Matrix #6 OK (4 elements)
+# total correct=28 wrong=0 matrices=7
+# [STIMULUS] Matrix #7 OK (4 elements)
+# total correct=32 wrong=0 matrices=8
+# [STIMULUS] Matrix #8 OK (4 elements)
+# total correct=36 wrong=0 matrices=9
+# [STIMULUS] Matrix #9 OK (4 elements)
+# total correct=40 wrong=0 matrices=10
+# [STIMULUS] Matrix #10 OK (4 elements)
+# total correct=44 wrong=0 matrices=11
+# [STIMULUS] Matrix #11 OK (4 elements)
+# total correct=48 wrong=0 matrices=12
+# [STIMULUS] Matrix #12 OK (4 elements)
+# total correct=52 wrong=0 matrices=13
+# [STIMULUS] Matrix #13 OK (4 elements)
+# total correct=56 wrong=0 matrices=14
+# [STIMULUS] Matrix #14 OK (4 elements)
+# total correct=60 wrong=0 matrices=15
+# [STIMULUS] Matrix #15 OK (4 elements)
+# total correct=64 wrong=0 matrices=16
+# [STIMULUS] Matrix #16 OK (4 elements)
+# total correct=68 wrong=0 matrices=17
+# [STIMULUS] Matrix #17 OK (4 elements)
+# total correct=72 wrong=0 matrices=18
+# [STIMULUS] Matrix #18 OK (4 elements)
+# total correct=76 wrong=0 matrices=19
+# [STIMULUS] Matrix #19 OK (4 elements)
+# total correct=80 wrong=0 matrices=20
+# [STIMULUS] Matrix #20 OK (4 elements)
+# total correct=84 wrong=0 matrices=21
+# [STIMULUS] Matrix #21 OK (4 elements)
+# total correct=88 wrong=0 matrices=22
+# [STIMULUS] Matrix #22 OK (4 elements)
+# total correct=92 wrong=0 matrices=23
+# [STIMULUS] Matrix #23 OK (4 elements)
+# total correct=96 wrong=0 matrices=24
+# [STIMULUS] Matrix #24 OK (4 elements)
+# total correct=100 wrong=0 matrices=25
+# [STIMULUS] Matrix #25 OK (4 elements)
+# total correct=104 wrong=0 matrices=26
+# [STIMULUS] Matrix #26 OK (4 elements)
+# total correct=108 wrong=0 matrices=27
+# [STIMULUS] Matrix #27 OK (4 elements)
+# total correct=112 wrong=0 matrices=28
+# [STIMULUS] Matrix #28 OK (4 elements)
+# total correct=116 wrong=0 matrices=29
+# [STIMULUS] Matrix #29 OK (4 elements)
+# total correct=120 wrong=0 matrices=30
+# [STIMULUS] Matrix #30 OK (4 elements)
+# total correct=124 wrong=0 matrices=31
+# [STIMULUS] Matrix #31 OK (4 elements)
+# total correct=128 wrong=0 matrices=32
+# [STIMULUS] Matrix #32 OK (4 elements)
+# total correct=132 wrong=0 matrices=33
+# [STIMULUS] Matrix #33 OK (4 elements)
+# total correct=136 wrong=0 matrices=34
+# [STIMULUS] Matrix #34 OK (4 elements)
+# total correct=140 wrong=0 matrices=35
+# [STIMULUS] Matrix #35 OK (4 elements)
+# total correct=144 wrong=0 matrices=36
+# [STIMULUS] Matrix #36 OK (4 elements)
+# total correct=148 wrong=0 matrices=37
+# [STIMULUS] Matrix #37 OK (4 elements)
+# total correct=152 wrong=0 matrices=38
+# [STIMULUS] Matrix #38 OK (4 elements)
+# total correct=156 wrong=0 matrices=39
+# [STIMULUS] Matrix #39 OK (4 elements)
+# total correct=160 wrong=0 matrices=40
+# [STIMULUS] Matrix #40 OK (4 elements)
+# total correct=164 wrong=0 matrices=41
+# [STIMULUS] Matrix #41 OK (4 elements)
+# total correct=168 wrong=0 matrices=42
+# [STIMULUS] Matrix #42 OK (4 elements)
+# total correct=172 wrong=0 matrices=43
+# [STIMULUS] Matrix #43 OK (4 elements)
+# total correct=176 wrong=0 matrices=44
+# [STIMULUS] Matrix #44 OK (4 elements)
+# total correct=180 wrong=0 matrices=45
+# [STIMULUS] Matrix #45 OK (4 elements)
+# total correct=184 wrong=0 matrices=46
+# [STIMULUS] Matrix #46 OK (4 elements)
+# total correct=188 wrong=0 matrices=47
+# [STIMULUS] Matrix #47 OK (4 elements)
+# total correct=192 wrong=0 matrices=48
+# [STIMULUS] Matrix #48 OK (4 elements)
+# total correct=196 wrong=0 matrices=49
+# [STIMULUS] Matrix #49 OK (4 elements)
+# [Progress] 50 matrices done... Current accuracy = 100.00%
+# total correct=200 wrong=0 matrices=50
+# [STIMULUS] Matrix #50 OK (4 elements)
+# total correct=204 wrong=0 matrices=51
+# [STIMULUS] Matrix #51 OK (4 elements)
+# total correct=208 wrong=0 matrices=52
+# [STIMULUS] Matrix #52 OK (4 elements)
+# total correct=212 wrong=0 matrices=53
+# [STIMULUS] Matrix #53 OK (4 elements)
+# total correct=216 wrong=0 matrices=54
+# [STIMULUS] Matrix #54 OK (4 elements)
+# total correct=220 wrong=0 matrices=55
+# [STIMULUS] Matrix #55 OK (4 elements)
+# total correct=224 wrong=0 matrices=56
+# [STIMULUS] Matrix #56 OK (4 elements)
+# total correct=228 wrong=0 matrices=57
+# [STIMULUS] Matrix #57 OK (4 elements)
+# total correct=232 wrong=0 matrices=58
+# [STIMULUS] Matrix #58 OK (4 elements)
+# total correct=236 wrong=0 matrices=59
+# [STIMULUS] Matrix #59 OK (4 elements)
+# total correct=240 wrong=0 matrices=60
+# [STIMULUS] Matrix #60 OK (4 elements)
+# total correct=244 wrong=0 matrices=61
+# [STIMULUS] Matrix #61 OK (4 elements)
+# total correct=248 wrong=0 matrices=62
+# [STIMULUS] Matrix #62 OK (4 elements)
+# total correct=252 wrong=0 matrices=63
+# [STIMULUS] Matrix #63 OK (4 elements)
+# total correct=256 wrong=0 matrices=64
+# [STIMULUS] Matrix #64 OK (4 elements)
+# total correct=260 wrong=0 matrices=65
+# [STIMULUS] Matrix #65 OK (4 elements)
+# total correct=264 wrong=0 matrices=66
+# [STIMULUS] Matrix #66 OK (4 elements)
+# total correct=268 wrong=0 matrices=67
+# [STIMULUS] Matrix #67 OK (4 elements)
+# total correct=272 wrong=0 matrices=68
+# [STIMULUS] Matrix #68 OK (4 elements)
+# total correct=276 wrong=0 matrices=69
+# [STIMULUS] Matrix #69 OK (4 elements)
+# total correct=280 wrong=0 matrices=70
+# [STIMULUS] Matrix #70 OK (4 elements)
+# total correct=284 wrong=0 matrices=71
+# [STIMULUS] Matrix #71 OK (4 elements)
+# total correct=288 wrong=0 matrices=72
+# [STIMULUS] Matrix #72 OK (4 elements)
+# total correct=292 wrong=0 matrices=73
+# [STIMULUS] Matrix #73 OK (4 elements)
+# total correct=296 wrong=0 matrices=74
+# [STIMULUS] Matrix #74 OK (4 elements)
+# total correct=300 wrong=0 matrices=75
+# [STIMULUS] Matrix #75 OK (4 elements)
+# total correct=304 wrong=0 matrices=76
+# [STIMULUS] Matrix #76 OK (4 elements)
+# total correct=308 wrong=0 matrices=77
+# [STIMULUS] Matrix #77 OK (4 elements)
+# total correct=312 wrong=0 matrices=78
+# [STIMULUS] Matrix #78 OK (4 elements)
+# total correct=316 wrong=0 matrices=79
+# [STIMULUS] Matrix #79 OK (4 elements)
+# total correct=320 wrong=0 matrices=80
+# [STIMULUS] Matrix #80 OK (4 elements)
+# total correct=324 wrong=0 matrices=81
+# [STIMULUS] Matrix #81 OK (4 elements)
+# total correct=328 wrong=0 matrices=82
+# [STIMULUS] Matrix #82 OK (4 elements)
+# total correct=332 wrong=0 matrices=83
+# [STIMULUS] Matrix #83 OK (4 elements)
+# total correct=336 wrong=0 matrices=84
+# [STIMULUS] Matrix #84 OK (4 elements)
+# total correct=340 wrong=0 matrices=85
+# [STIMULUS] Matrix #85 OK (4 elements)
+# total correct=344 wrong=0 matrices=86
+# [STIMULUS] Matrix #86 OK (4 elements)
+# total correct=348 wrong=0 matrices=87
+# [STIMULUS] Matrix #87 OK (4 elements)
+# total correct=352 wrong=0 matrices=88
+# [STIMULUS] Matrix #88 OK (4 elements)
+# total correct=356 wrong=0 matrices=89
+# [STIMULUS] Matrix #89 OK (4 elements)
+# total correct=360 wrong=0 matrices=90
+# [STIMULUS] Matrix #90 OK (4 elements)
+# total correct=364 wrong=0 matrices=91
+# [STIMULUS] Matrix #91 OK (4 elements)
+# total correct=368 wrong=0 matrices=92
+# [STIMULUS] Matrix #92 OK (4 elements)
+# total correct=372 wrong=0 matrices=93
+# [STIMULUS] Matrix #93 OK (4 elements)
+# total correct=376 wrong=0 matrices=94
+# [STIMULUS] Matrix #94 OK (4 elements)
+# total correct=380 wrong=0 matrices=95
+# [STIMULUS] Matrix #95 OK (4 elements)
+# total correct=384 wrong=0 matrices=96
+# [STIMULUS] Matrix #96 OK (4 elements)
+# total correct=388 wrong=0 matrices=97
+# [STIMULUS] Matrix #97 OK (4 elements)
+# total correct=392 wrong=0 matrices=98
+# [STIMULUS] Matrix #98 OK (4 elements)
+# total correct=396 wrong=0 matrices=99
+# [STIMULUS] Matrix #99 OK (4 elements)
+# [Progress] 100 matrices done... Current accuracy = 100.00%
+# total correct=400 wrong=0 matrices=100
+# [STIMULUS] Matrix #100 OK (4 elements)
+# total correct=404 wrong=0 matrices=101
+# [STIMULUS] Matrix #101 OK (4 elements)
+# total correct=408 wrong=0 matrices=102
+# [STIMULUS] Matrix #102 OK (4 elements)
+# total correct=412 wrong=0 matrices=103
+# [STIMULUS] Matrix #103 OK (4 elements)
+# total correct=416 wrong=0 matrices=104
+# [STIMULUS] Matrix #104 OK (4 elements)
+# total correct=420 wrong=0 matrices=105
+# [STIMULUS] Matrix #105 OK (4 elements)
+# total correct=424 wrong=0 matrices=106
+# [STIMULUS] Matrix #106 OK (4 elements)
+# total correct=428 wrong=0 matrices=107
+# [STIMULUS] Matrix #107 OK (4 elements)
+# total correct=432 wrong=0 matrices=108
+# [STIMULUS] Matrix #108 OK (4 elements)
+# total correct=436 wrong=0 matrices=109
+# [STIMULUS] Matrix #109 OK (4 elements)
+# total correct=440 wrong=0 matrices=110
+# [STIMULUS] Matrix #110 OK (4 elements)
+# total correct=444 wrong=0 matrices=111
+# [STIMULUS] Matrix #111 OK (4 elements)
+# total correct=448 wrong=0 matrices=112
+# [STIMULUS] Matrix #112 OK (4 elements)
+# total correct=452 wrong=0 matrices=113
+# [STIMULUS] Matrix #113 OK (4 elements)
+# total correct=456 wrong=0 matrices=114
+# [STIMULUS] Matrix #114 OK (4 elements)
+# total correct=460 wrong=0 matrices=115
+# [STIMULUS] Matrix #115 OK (4 elements)
+# total correct=464 wrong=0 matrices=116
+# [STIMULUS] Matrix #116 OK (4 elements)
+# total correct=468 wrong=0 matrices=117
+# [STIMULUS] Matrix #117 OK (4 elements)
+# total correct=472 wrong=0 matrices=118
+# [STIMULUS] Matrix #118 OK (4 elements)
+# total correct=476 wrong=0 matrices=119
+# [STIMULUS] Matrix #119 OK (4 elements)
+# total correct=480 wrong=0 matrices=120
+# [STIMULUS] Matrix #120 OK (4 elements)
+# total correct=484 wrong=0 matrices=121
+# [STIMULUS] Matrix #121 OK (4 elements)
+# total correct=488 wrong=0 matrices=122
+# [STIMULUS] Matrix #122 OK (4 elements)
+# total correct=492 wrong=0 matrices=123
+# [STIMULUS] Matrix #123 OK (4 elements)
+# total correct=496 wrong=0 matrices=124
+# [STIMULUS] Matrix #124 OK (4 elements)
+# total correct=500 wrong=0 matrices=125
+# [STIMULUS] Matrix #125 OK (4 elements)
+# total correct=504 wrong=0 matrices=126
+# [STIMULUS] Matrix #126 OK (4 elements)
+# total correct=508 wrong=0 matrices=127
+# [STIMULUS] Matrix #127 OK (4 elements)
+# total correct=512 wrong=0 matrices=128
+# [STIMULUS] Matrix #128 OK (4 elements)
+# total correct=516 wrong=0 matrices=129
+# [STIMULUS] Matrix #129 OK (4 elements)
+# total correct=520 wrong=0 matrices=130
+# [STIMULUS] Matrix #130 OK (4 elements)
+# total correct=524 wrong=0 matrices=131
+# [STIMULUS] Matrix #131 OK (4 elements)
+# total correct=528 wrong=0 matrices=132
+# [STIMULUS] Matrix #132 OK (4 elements)
+# total correct=532 wrong=0 matrices=133
+# [STIMULUS] Matrix #133 OK (4 elements)
+# total correct=536 wrong=0 matrices=134
+# [STIMULUS] Matrix #134 OK (4 elements)
+# total correct=540 wrong=0 matrices=135
+# [STIMULUS] Matrix #135 OK (4 elements)
+# total correct=544 wrong=0 matrices=136
+# [STIMULUS] Matrix #136 OK (4 elements)
+# total correct=548 wrong=0 matrices=137
+# [STIMULUS] Matrix #137 OK (4 elements)
+# total correct=552 wrong=0 matrices=138
+# [STIMULUS] Matrix #138 OK (4 elements)
+# total correct=556 wrong=0 matrices=139
+# [STIMULUS] Matrix #139 OK (4 elements)
+# total correct=560 wrong=0 matrices=140
+# [STIMULUS] Matrix #140 OK (4 elements)
+# total correct=564 wrong=0 matrices=141
+# [STIMULUS] Matrix #141 OK (4 elements)
+# total correct=568 wrong=0 matrices=142
+# [STIMULUS] Matrix #142 OK (4 elements)
+# total correct=572 wrong=0 matrices=143
+# [STIMULUS] Matrix #143 OK (4 elements)
+# total correct=576 wrong=0 matrices=144
+# [STIMULUS] Matrix #144 OK (4 elements)
+# total correct=580 wrong=0 matrices=145
+# [STIMULUS] Matrix #145 OK (4 elements)
+# total correct=584 wrong=0 matrices=146
+# [STIMULUS] Matrix #146 OK (4 elements)
+# total correct=588 wrong=0 matrices=147
+# [STIMULUS] Matrix #147 OK (4 elements)
+# total correct=592 wrong=0 matrices=148
+# [STIMULUS] Matrix #148 OK (4 elements)
+# total correct=596 wrong=0 matrices=149
+# [STIMULUS] Matrix #149 OK (4 elements)
+# [Progress] 150 matrices done... Current accuracy = 100.00%
+# total correct=600 wrong=0 matrices=150
+# [STIMULUS] Matrix #150 OK (4 elements)
+# total correct=604 wrong=0 matrices=151
+# [STIMULUS] Matrix #151 OK (4 elements)
+# total correct=608 wrong=0 matrices=152
+# [STIMULUS] Matrix #152 OK (4 elements)
+# total correct=612 wrong=0 matrices=153
+# [STIMULUS] Matrix #153 OK (4 elements)
+# total correct=616 wrong=0 matrices=154
+# [STIMULUS] Matrix #154 OK (4 elements)
+# total correct=620 wrong=0 matrices=155
+# [STIMULUS] Matrix #155 OK (4 elements)
+# total correct=624 wrong=0 matrices=156
+# [STIMULUS] Matrix #156 OK (4 elements)
+# total correct=628 wrong=0 matrices=157
+# [STIMULUS] Matrix #157 OK (4 elements)
+# total correct=632 wrong=0 matrices=158
+# [STIMULUS] Matrix #158 OK (4 elements)
+# total correct=636 wrong=0 matrices=159
+# [STIMULUS] Matrix #159 OK (4 elements)
+# total correct=640 wrong=0 matrices=160
+# [STIMULUS] Matrix #160 OK (4 elements)
+# total correct=644 wrong=0 matrices=161
+# [STIMULUS] Matrix #161 OK (4 elements)
+# total correct=648 wrong=0 matrices=162
+# [STIMULUS] Matrix #162 OK (4 elements)
+# total correct=652 wrong=0 matrices=163
+# [STIMULUS] Matrix #163 OK (4 elements)
+# total correct=656 wrong=0 matrices=164
+# [STIMULUS] Matrix #164 OK (4 elements)
+# total correct=660 wrong=0 matrices=165
+# [STIMULUS] Matrix #165 OK (4 elements)
+# total correct=664 wrong=0 matrices=166
+# [STIMULUS] Matrix #166 OK (4 elements)
+# total correct=668 wrong=0 matrices=167
+# [STIMULUS] Matrix #167 OK (4 elements)
+# total correct=672 wrong=0 matrices=168
+# [STIMULUS] Matrix #168 OK (4 elements)
+# total correct=676 wrong=0 matrices=169
+# [STIMULUS] Matrix #169 OK (4 elements)
+# total correct=680 wrong=0 matrices=170
+# [STIMULUS] Matrix #170 OK (4 elements)
+# total correct=684 wrong=0 matrices=171
+# [STIMULUS] Matrix #171 OK (4 elements)
+# total correct=688 wrong=0 matrices=172
+# [STIMULUS] Matrix #172 OK (4 elements)
+# total correct=692 wrong=0 matrices=173
+# [STIMULUS] Matrix #173 OK (4 elements)
+# total correct=696 wrong=0 matrices=174
+# [STIMULUS] Matrix #174 OK (4 elements)
+# total correct=700 wrong=0 matrices=175
+# [STIMULUS] Matrix #175 OK (4 elements)
+# total correct=704 wrong=0 matrices=176
+# [STIMULUS] Matrix #176 OK (4 elements)
+# total correct=708 wrong=0 matrices=177
+# [STIMULUS] Matrix #177 OK (4 elements)
+# total correct=712 wrong=0 matrices=178
+# [STIMULUS] Matrix #178 OK (4 elements)
+# total correct=716 wrong=0 matrices=179
+# [STIMULUS] Matrix #179 OK (4 elements)
+# total correct=720 wrong=0 matrices=180
+# [STIMULUS] Matrix #180 OK (4 elements)
+# total correct=724 wrong=0 matrices=181
+# [STIMULUS] Matrix #181 OK (4 elements)
+# total correct=728 wrong=0 matrices=182
+# [STIMULUS] Matrix #182 OK (4 elements)
+# total correct=732 wrong=0 matrices=183
+# [STIMULUS] Matrix #183 OK (4 elements)
+# total correct=736 wrong=0 matrices=184
+# [STIMULUS] Matrix #184 OK (4 elements)
+# total correct=740 wrong=0 matrices=185
+# [STIMULUS] Matrix #185 OK (4 elements)
+# total correct=744 wrong=0 matrices=186
+# [STIMULUS] Matrix #186 OK (4 elements)
+# total correct=748 wrong=0 matrices=187
+# [STIMULUS] Matrix #187 OK (4 elements)
+# total correct=752 wrong=0 matrices=188
+# [STIMULUS] Matrix #188 OK (4 elements)
+# total correct=756 wrong=0 matrices=189
+# [STIMULUS] Matrix #189 OK (4 elements)
+# total correct=760 wrong=0 matrices=190
+# [STIMULUS] Matrix #190 OK (4 elements)
+# total correct=764 wrong=0 matrices=191
+# [STIMULUS] Matrix #191 OK (4 elements)
+# total correct=768 wrong=0 matrices=192
+# [STIMULUS] Matrix #192 OK (4 elements)
+# total correct=772 wrong=0 matrices=193
+# [STIMULUS] Matrix #193 OK (4 elements)
+# total correct=776 wrong=0 matrices=194
+# [STIMULUS] Matrix #194 OK (4 elements)
+# total correct=780 wrong=0 matrices=195
+# [STIMULUS] Matrix #195 OK (4 elements)
+# total correct=784 wrong=0 matrices=196
+# [STIMULUS] Matrix #196 OK (4 elements)
+# total correct=788 wrong=0 matrices=197
+# [STIMULUS] Matrix #197 OK (4 elements)
+# total correct=792 wrong=0 matrices=198
+# [STIMULUS] Matrix #198 OK (4 elements)
+# total correct=796 wrong=0 matrices=199
+# [STIMULUS] End of dimensions file reached. No more matrices to process.
+# [STIMULUS] All dimensions processed or dimensions file empty. Printing final summary...
+# 
+# =============================================================
+#  AI ACCELERATOR - MATRIX MULTIPLIER PERFORMANCE REPORT 
+# =============================================================
+# Total Matrices Checked          : 199
+# Total Correct Results           : 796
+# Total Wrong Results             : 0
+# -------------------------------------------------------------
+# Accuracy                        : 100.00 %
+# Error Rate                      : 0.00 %
+# -------------------------------------------------------------
+# MAC Operations (Total)          : 1592
+# Estimated Throughput            : 0.020 GFLOPS
+# Datapath Utilization            : 20.00 %
+# -------------------------------------------------------------
+# Simulation End Time             : 7961500 ns
+# =============================================================
+# 
+# ** Note: $finish    : matmul_stimulus.sv(562)
+#    Time: 79615 ns  Iteration: 1  Instance: /matmul_tb/u_tester/u_stim
+# [7961500] Simulation ended
+# End time: 11:05:27 on Nov 14,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+End time: 11:05:27 on Nov 14,2025, Elapsed time: 0:00:04
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   0
+    vopt: Errors:   0, Warnings:   1
+    vsim: Errors:   0, Warnings:   0
+  Totals: Errors:   0, Warnings:   1
